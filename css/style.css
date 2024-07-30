@@ -95,7 +95,6 @@ p {
   text-transform: uppercase;
 }
 .burger-btn {
-  padding: 0;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -223,6 +222,7 @@ p {
   margin-bottom: 8px;
 }
 .feature-item-text {
+  margin: 0 auto;
   color: var(--slate);
   font-size: 16px;
   font-style: normal;
@@ -380,11 +380,13 @@ p {
   padding-left: 16px;
 }
 /* Footer */
+.page-footer {
+  background: var(--navy-blue);
+}
 .footer-container {
   display: flex;
   flex-wrap: wrap;
   padding: 96px 0;
-  background: var(--navy-blue);
 }
 .logo-container {
   margin: 0 auto;
