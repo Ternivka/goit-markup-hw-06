@@ -765,7 +765,8 @@ p {
     max-width: 768px;
   }
   .burger-icon,
-  .mobile-menu {
+  .mobile-menu,
+  .burger-btn {
     display: none;
   }
   .nav-list {
