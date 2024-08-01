@@ -65,8 +65,8 @@ p {
 }
 /* Logo */
 .header-section {
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--CORNFLOWER, #e7e9fc);
   background: var(--WHITE, #fff);
 }
@@ -94,6 +94,7 @@ p {
   letter-spacing: 0.54px;
   text-transform: uppercase;
 }
+
 .burger-btn {
   border: none;
   background-color: transparent;
@@ -105,33 +106,58 @@ p {
 }
 
 /* navigation */
-.navigation-list {
+.nav-list {
   display: none;
-  margin-left: 76px;
+  /* margin-left: 76px; */
   gap: 40px;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.navigation-link {
+.nav-link {
+  padding: 24px 0;
   font-weight: 500;
-  color: var(--navy-blue);
+  font-style: normal;
+
+  font-size: 16px;
+  letter-spacing: 0.32px;
+  line-height: 24px;
+  color: #2e2f42;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.navigation-link:focus,
-.navigation-link:hover {
+.nav-link:focus,
+.nav-link:hover {
   color: var(--ocean);
 }
-
+.nav-link.current {
+  position: relative;
+}
+.nav-link.current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--ocean);
+}
 /* Address */
 .contacts {
   display: none;
-  margin-left: 332px;
+  /* margin-left: 332px; */
 }
 .contacts-item {
   color: var(--slate);
+  font-family: Roboto;
+  font-size: 12px;
   font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.48px;
 }
-.contacts-item:not(:last-child) {
+/* .contacts-item:not(:last-child) {
   padding-right: 40px;
-}
+} */
 .contacts-item:focus,
 .contacts-item:hover {
   color: var(--ocean);
@@ -143,16 +169,31 @@ p {
       rgba(46, 47, 66, 0.7),
       rgba(46, 47, 66, 0.7)
     ),
-    url(../images/people-office.jpg);
+    url(../images/mobile-bg/mobile-bg1x.jpg);
   background-repeat: no-repeat;
-  background-position: 50% 0%;
+  background-position: center;
   block-size: cover;
   margin: auto;
   max-width: 1440px;
   padding-top: 72px;
   padding-bottom: 72px;
 }
-
+@media screen and (min-device-pixel-ratio: 2),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .banner-section {
+    background: var(--navy-blue);
+    background-image: linear-gradient(
+        rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)
+      ),
+      url(../images/mobile-bg/mobile-bg2x.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    block-size: cover;
+  }
+}
 .banner-heading {
   font-weight: 700;
   font-size: 36px;
@@ -463,9 +504,9 @@ p {
   margin-bottom: 16px;
   text-align: center;
 }
-.footer-form {
-  /* display: flex; */
-}
+/* .footer-form {
+  display: flex;
+} */
 .footer-input {
   width: 288px;
   height: 40px;
@@ -592,6 +633,7 @@ p {
   display: inline-block;
   margin-bottom: 4px;
 }
+
 .modal-input-wrap {
   position: relative;
   margin-bottom: 8px;
@@ -642,28 +684,25 @@ p {
 .modal-comment:focus {
   border-color: var(--iris);
 }
-
+.modal-field {
+  margin-top: 16px;
+}
 .modal-check-text {
   color: var(--light-slate);
   font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: 0.04em;
+  line-height: 14px;
+  letter-spacing: 0.48px;
   display: flex;
   align-items: center;
-  margin-top: 16px;
+  gap: 8px;
 }
-.modal-check-link {
-  color: var(--iris);
-  text-decoration-line: underline;
-  padding-left: 2px;
-}
-.modal-check-text span {
+.modal-check-text .modal-span-icon {
   width: 16px;
   height: 16px;
-  margin-right: 8px;
-  border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 2px;
-  display: inline-flex;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  flex-shrink: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
   fill: transparent;
@@ -671,21 +710,17 @@ p {
     border 250ms cubic-bezier(0.4, 0, 0.2, 1),
     fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.modal-check:checked + .modal-check-text span {
-  background-color: var(--iris);
-  fill: var(--cloud);
+
+.modal-check:checked + .modal-check-text .modal-span-icon {
+  background-color: var(--ocean);
   border: none;
+  fill: #fff;
 }
-.modal-term-text {
-  width: 231px;
-  color: var(--light-slate);
-  font-family: Roboto;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 14px;
-  letter-spacing: 0.48px;
+.modal-terms {
+  color: var(--iris);
+  text-decoration-line: underline;
 }
+
 .modal-form-btn {
   display: block;
   min-width: 169px;
@@ -729,6 +764,48 @@ p {
   .container {
     max-width: 768px;
   }
+  .burger-btn,
+  .mobile-menu {
+    display: none;
+  }
+  .nav-list {
+    display: flex;
+    margin-left: 120px;
+  }
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 12px;
+    margin-left: 120px;
+  }
+  .banner-section {
+    background: var(--navy-blue);
+    background-image: linear-gradient(
+        rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)
+      ),
+      url(../images/tablet-bg/tablet-bg1x.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .banner-section {
+      background: var(--navy-blue);
+      background-image: linear-gradient(
+          rgba(46, 47, 66, 0.7),
+          rgba(46, 47, 66, 0.7)
+        ),
+        url(../images/tablet-bg/tablet-bg2x.jpg);
+      background-repeat: no-repeat;
+      background-position: top;
+      block-size: cover;
+    }
+  }
 }
 
 @media screen and (min-width: 1158px) {
@@ -736,6 +813,34 @@ p {
     max-width: 1158px;
     padding-left: 15px;
     padding-right: 15px;
+  }
+  .banner-section {
+    background: var(--navy-blue);
+    background-image: linear-gradient(
+        rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)
+      ),
+      url(../images/desktop-bg/desktop-bg1x.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    block-size: cover;
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .banner-section {
+      background: var(--navy-blue);
+      background-image: linear-gradient(
+          rgba(46, 47, 66, 0.7),
+          rgba(46, 47, 66, 0.7)
+        ),
+        url(../images/desktop-bg/desktop-bg2x.jpg);
+      background-repeat: no-repeat;
+      background-position: top;
+      block-size: cover;
+    }
   }
 }
 
@@ -857,10 +962,4 @@ p {
 .menu-icon-background:hover,
 .menu-icon-background:focus {
   background-color: var(--ocean);
-}
-
-@media screen and (min-width: 768px) {
-  .mobile-menu {
-    display: none;
-  }
 }
